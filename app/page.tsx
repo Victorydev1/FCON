@@ -160,6 +160,12 @@ export default function Home() {
         width={169.5}
         height={113}
         />
+        <Image
+        src="/green.png"
+        alt="green"
+        width={169.5}
+        height={113}
+        />
       </section>
     </div>
   );
