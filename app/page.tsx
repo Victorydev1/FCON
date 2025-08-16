@@ -109,7 +109,7 @@ export default function Home() {
           <Image 
           className="w-full h-full object-cover"
           src="/hero.png"
-          alt="hero"
+          alt="hero"git 
           width={720}
           height={768}
           />
