@@ -116,137 +116,101 @@ export default function Home() {
             />
           </div>
         </div>
-        <Image 
-        className="mt-20 relative left-60"
-        src="/sponsor.png"
-        alt="sponsor"
-        width={1120}
-        height={36}
-        />
-        <div className="mt-4 flex mx-40">
-          <Image
-          src="/green.png"
-          alt="green"
-          width={169.5}
-          height={113}
-          />
-          <Image
-          src="/nanas.png"
-          alt="green"
-          width={169.5}
-          height={113}
-          />
-          <Image
-          src="/green.png"
-          alt="green"
-          width={169.5}
-          height={113}
-          />
-          <Image
-          src="/nanas.png"
-          alt="green"
-          width={169.5}
-          height={113}
-          />
-          <Image
-          src="/green.png"
-          alt="green"
-          width={169.5}
-          height={113}
-          />
-          <Image
-          src="/nanas.png"
-          alt="green"
-          width={169.5}
-          height={113}
-          />
-          <Image
-          src="/green.png"
-          alt="green"
-          width={169.5}
-          height={113}
-          />
-          <Image
-          src="/nanas.png"
-          alt="green"
-          width={169.5}
-          height={113}
-          />
-        </div>
-        <br />
-        <br />
-        
-      </section>  
-
-      <section className="bg-orange-100">
-        <div className="flex">
-          <div className="ml-35 py-15">
-            <span className="text-yellow-900 font-semibold tracking-wide uppercase">About Fcon</span>
-            <div className="flex gap-3">
-              <h3 className="font-poppins text-black text-5xl font-bold mb-4">Lorem</h3>
-              <h3 className="font-poppins text-black text-5xl font-bold">Ipsum</h3>
+        <section className="bg-white pt-100 sm:py-14 md:py-20">
+          <div className="px-4 sm:px-6 lg:px-8">
+            <h2 className="text-center text-lg sm:text-xl font-semibold text-gray-800 mb-8">
+              OUR SPONSORS
+            </h2>
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 sm:gap-10 place-items-center">
+              {[...Array(8)].map((_, i) => (
+                <Image
+                  key={i}
+                  src={i % 2 === 0 ? "/green.png" : "/nanas.png"}
+                  alt="sponsor-logo"
+                  width={170}
+                  height={113}
+                  className="transition-transform duration-300 hover:scale-105"
+                />
+              ))}
             </div>
-            <h3 className="font-poppins text-black text-5xl font-bold mb-8">Lorem</h3>
           </div>
-          <p className="text-black font-poppins font-normal text-base tracking-tighter leading-tight py-15 px-72">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-          ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-          nisi ut aliquip ex ea commodo consequat.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et do sit</p>
-        </div>
-          <div className="ml-182 relative bottom-35">
-            <button className="mt-8 inline-flex items-center gap-2 px-5 py-3 text-white font-medium rounded-md bg-gradient-to-r from-[#62061D] to-[#F89A20] hover:opacity-90 transition shadow-md">Sponsor Us
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="w-4 h-4"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor">    
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-              </svg>
-            </button>
+        </section>
+
+        <section className="bg-orange-100 mt-16 md:mt-24 px-6 sm:px-12 md:px-20 py-12 rounded-2xl shadow-sm">
+          <div className="flex flex-col md:flex-row items-start md:items-center gap-8">
+            <div className="flex-1">
+              <span className="text-yellow-900 font-semibold tracking-wide uppercase">About Fcon</span>
+              <div className="flex gap-3 mt-2">
+                <h3 className="font-poppins text-black text-3xl sm:text-4xl md:text-5xl font-bold">Lorem</h3>
+                <h3 className="font-poppins text-black text-3xl sm:text-4xl md:text-5xl font-bold">Ipsum</h3>
+              </div>
+              <h3 className="font-poppins text-black text-3xl sm:text-4xl md:text-5xl font-bold mt-2 mb-6">Lorem</h3>
+              <button className="mt-6 inline-flex items-center gap-2 px-5 py-3 text-white font-medium rounded-lg bg-gradient-to-r from-[#62061D] to-[#F89A20] hover:opacity-90 transition shadow-md">
+                Sponsor Us
+                <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">    
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                </svg>
+              </button>
+            </div>
+
+            <p className="flex-1 text-black font-poppins text-sm sm:text-base md:text-lg leading-relaxed">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+              ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
+              nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            </p>
           </div>
 
-          <div className="flex gap-8 ml-35">
+          <div className="mt-12 flex flex-col md:flex-row justify-center items-center gap-6">
+            <Image 
+              src="/sponsor1.png"
+              alt="sponsor-img"
+              width={350} height={300} 
+              className="rounded-lg shadow-md" 
+              />
+            <Image src="/sponsor2.png"
+             alt="sponsor-img" 
+             width={440} height={1000} 
+             className="rounded-lg shadow-md md:translate-y-4" 
+             />
             <Image
-            className="h-full"
-            src="/sponsor1.png"
-            alt="sponsor-img"
-            width={347.5}
-            height={300}
-            />
-            <Image
-            className="relative bottom-23"
-            src="/sponsor2.png"
-            alt="sponsor-img"
-            width={444}
-            height={1000}
-            />
-            <Image
-            className="h-full relative bottom-45"
-            src="/sponsor3.png"
-            alt="sponsor-img"
-            width={260}
-            height={270}
+              src="/sponsor3.png" 
+              alt="sponsor-img" 
+              width={260} height={270} 
+              className="rounded-lg shadow-md md:-translate-y-6" 
             />
           </div>
-      </section>
+        </section>
 
-      <section>
-        <div className="flex">
-          <Image
-          src="/ellipse1.png"
-          alt="ellipse"
-          width={104.2}
-          height={77.29}      
-          />
-          <h1 className="font-poppins text-black text-5xl font-bold">What Inspired FCON</h1>
-          <Image
-          src="/ellipse2.png"
-          alt="ellipse"
-          width={104.2}
-          height={77.29}      
-          />
-        </div>
-      </section>
+        <section className="mt-20 px-6 sm:px-12 md:px-24 text-center">
+          <div className="flex sm:flex-row justify-center items-center gap-4">
+            <Image 
+              src="/ellipse1.png" 
+              alt="ellipse"
+              width={104} height={77} />
+            <h1 className="font-poppins text-black font-semibold text-xl sm:text-4xl md:text-5xl">What Inspired</h1>
+            <div className="flex items-center gap-4">
+              <h1 className="font-poppins text-black font-semibold text-xl sm:text-4xl md:text-5xl">FCON</h1>
+              <Image 
+               src="/ellipse2.png"
+               alt="ellipse"
+               width={104} height={77} />
+            </div>
+          </div>
+
+          <p className="mt-6 text-black font-poppins text-base sm:text-lg md:text-xl leading-relaxed max-w-4xl mx-auto">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+          </p>
+
+          <button className="mt-8 inline-flex items-center gap-2 px-6 py-3 text-white text-sm sm:text-base rounded-lg bg-gradient-to-r from-[#62061D] to-[#F89A20] hover:opacity-90 transition shadow-md">
+            Learn More
+            <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">    
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+            </svg>
+          </button>
+        </section>
+      </section> 
     </div>
   );
 }
+
