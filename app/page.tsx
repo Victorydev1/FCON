@@ -138,7 +138,7 @@ export default function Home() {
 
         <section className="bg-orange-100 mt-16 md:mt-24 px-6 sm:px-12 md:px-20 py-12 rounded-2xl shadow-sm">
           <div className="flex flex-col md:flex-row items-start md:items-center gap-8">
-            <div className="flex-1">
+            <div className="flex-1 md:ml-16">
               <span className="text-yellow-900 font-semibold tracking-wide uppercase">About Fcon</span>
               <div className="flex gap-3 mt-2">
                 <h3 className="font-poppins text-black text-3xl sm:text-4xl md:text-5xl font-bold">Lorem</h3>
@@ -181,7 +181,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="mt-20 px-6 sm:px-12 md:px-24 text-center">
+        <section className="bg-gray-200 pt-20 px-6 sm:px-12 md:px-24 text-center">
           <div className="flex sm:flex-row justify-center items-center gap-4">
             <Image 
               src="/ellipse1.png" 
@@ -202,7 +202,7 @@ export default function Home() {
             Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
           </p>
 
-          <button className="mt-8 inline-flex items-center gap-2 px-6 py-3 text-white text-sm sm:text-base rounded-lg bg-gradient-to-r from-[#62061D] to-[#F89A20] hover:opacity-90 transition shadow-md">
+          <button className="mt-8 mb-10 inline-flex items-center gap-2 px-4 py-2 text-white text-sm sm:text-base rounded-lg bg-gradient-to-r from-[#62061D] to-[#F89A20] hover:opacity-90 transition shadow-md">
             Learn More
             <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">    
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
@@ -210,7 +210,98 @@ export default function Home() {
           </button>
         </section>
       </section> 
+
+      <section className="bg-white py-12 px-4 sm:px-8 md:px-20">
+
+        <div className="flex flex-col md:flex-row md:items-center md:gap-6">
+          <h1 className="font-poppins text-black font-bold text-2xl sm:text-3xl md:text-4xl">Hear from our Queens</h1>
+          <Image
+            src="/line.png"
+            alt="line"
+            width={5}
+            height={0}
+            className="hidden md:block"
+          />
+          <p className="text-black font-poppins text-sm sm:text-base md:text-lg leading-relaxed md:ml-auto">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex </p>
+        </div>
+        <div className="flex justify-center md:justify-start mt-6">
+          <button className="px-5 py-2 text-white text-sm sm:text-base rounded-md bg-gradient-to-r from-[#62061D] to-[#F89A20] hover:opacity-90 transition shadow-md">
+            See Our Gallery
+          </button>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-10">
+          <div className="border-2 border-gray-300 rounded-3xl p-6">
+            <div className="flex items-center gap-4">
+              <Image
+                src="/review.png"
+                alt="review"
+                width={80}
+                height={80}
+                className="rounded-full"
+              />
+              <div>
+                <h1 className="font-semibold text-base">Jane Doe</h1>
+                <span className="text-xs font-semibold text-gray-500">FOCN 2022</span>
+              </div>
+            </div>
+            <p className="mt-4 text-sm text-gray-600 leading-relaxed">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod 
+              tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, 
+              quis nostrud exercitation ullamco laboris nisi ut aliquip ex.
+            </p>
+          </div>
+
+          <div className="border-2 border-gray-300 rounded-3xl p-6">
+            <div className="flex items-center gap-4">
+              <Image
+                src="/review.png"
+                alt="review"
+                width={80}
+                height={80}
+                className="rounded-full"
+              />
+              <div>
+                <h1 className="font-semibold text-base">Jane Doe</h1>
+                <span className="text-xs font-semibold text-gray-500">FOCN 2022</span>
+              </div>
+            </div>
+            <p className="mt-4 text-sm text-gray-600 leading-relaxed">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod 
+              tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, 
+              quis nostrud exercitation ullamco laboris nisi ut aliquip ex.
+            </p>
+          </div>
+
+          <div className="border-2 border-gray-300 rounded-3xl p-6">
+            <div className="flex items-center gap-4">
+              <Image
+                src="/review.png"
+                alt="review"
+                width={80}
+                height={80}
+                className="rounded-full"
+              />
+              <div>
+                <h1 className="font-semibold text-base">Jane Doe</h1>
+                <span className="text-xs font-semibold text-gray-500">FOCN 2022</span>
+              </div>
+            </div>
+            <p className="mt-4 text-sm text-gray-600 leading-relaxed">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod 
+              tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, 
+              quis nostrud exercitation ullamco laboris nisi ut aliquip ex.
+            </p>
+          </div>
+        </div>
+
+        {/* <div className="border-8 bg-gradient-to-r from-[#000D54] to-[#62061D] mx-40">
+          <h1>Subscribe to Our newsletter</h1>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et doLorem ipsum dolor sit amet, consectetur a</p>
+          <input className="bg-white rounded-2xl w-20 text-sm p-2 pl-5" type="text" placeholder="Your name" required/>
+          <input className="bg-white rounded-3xl p-2 pl-5" type="email" placeholder="Your email" required />
+        </div> */}
+      </section>
     </div>
   );
-}
-
+};
