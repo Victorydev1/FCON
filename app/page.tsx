@@ -1,83 +1,30 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
+import reviews from "@/components/review.json"
 
 export default function Home() {
-  const [isOpen, setIsOpen] = useState(false);
+   const sponsors = [...Array(8)].map((_, i) =>
+    i % 2 === 0 ? "/green.png" : "/nanas.png"
+  );
 
-  const navLinks = [
-    { name: "About", href: "#" },
-    { name: "Gallery", href: "#" },
-    { name: "Voting", href: "#" },
-    { name: "Shop", href: "#" },
-  ];
+  const [currentIndex, setCurrentIndex] = useState(0);
 
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % sponsors.length);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, [sponsors.length]);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % reviews.length);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, []);
   return (
     <div className="font-sans text-gray-900">
-      <nav className="w-full px-6 sm:px-35 py-4 flex bg-white items-center justify-between sticky top-0 z-50 shadow-md">
-        <Image
-          src="/logo.png"
-          alt="logo"
-          width={130}
-          height={50}
-          priority
-        />
-        <ul className="hidden md:flex gap-8 items-center font-medium">
-          {navLinks.map((link) => (
-            <li key={link.name}>
-              <a href={link.href} className="hover:text-orange-500 transition">
-                {link.name}
-              </a>
-            </li>
-          ))}
-          <button className="bg-gradient-to-r from-[#62061D] to-[#F89A20] text-white px-5 py-2 rounded-md shadow hover:opacity-90 transition">
-            CONTACT US
-          </button>
-        </ul>
-
-        <button
-          className="md:hidden text-2xl text-gray-800"
-          onClick={() => setIsOpen(true)}
-        >
-          ☰
-        </button>
-
-        <div
-          className={`fixed top-0 right-0 h-full w-2/3 bg-white shadow-lg transform transition-transform duration-300 ease-in-out md:hidden ${
-            isOpen ? "translate-x-0" : "translate-x-full"
-          }`}
-        >
-          <div className="flex justify-end p-4">
-            <button
-              className="text-2xl text-red-600"
-              onClick={() => setIsOpen(false)}
-            >
-              ✕
-            </button>
-          </div>
-
-          <ul className="flex flex-col gap-6 p-6 font-medium">
-            {navLinks.map((link) => (
-              <li key={link.name}>
-                <a
-                  href={link.href}
-                  onClick={() => setIsOpen(false)}
-                  className="block hover:text-orange-500 transition"
-                >
-                  {link.name}
-                </a>
-              </li>
-            ))}
-            <button
-              className="bg-gradient-to-r from-[#62061D] to-[#F89A20] text-white px-5 py-2 rounded-md shadow hover:opacity-90 transition"
-              onClick={() => setIsOpen(false)}
-            >
-              CONTACT US
-            </button>
-          </ul>
-        </div>
-      </nav>
-
       <section className="bg-white">
         <div className="flex flex-col md:flex-row w-full h-screen">
           <div className="flex flex-col justify-center items-start bg-white px-6 sm:px-10 md:px-20 lg:px-36 md:w-1/2 py-10 md:py-0">
@@ -121,17 +68,38 @@ export default function Home() {
             <h2 className="text-center text-lg sm:text-xl font-semibold text-gray-800 mb-8">
               OUR SPONSORS
             </h2>
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 sm:gap-10 place-items-center">
-              {[...Array(8)].map((_, i) => (
-                <Image
-                  key={i}
-                  src={i % 2 === 0 ? "/green.png" : "/nanas.png"}
-                  alt="sponsor-logo"
-                  width={170}
-                  height={113}
-                  className="transition-transform duration-300 hover:scale-105"
-                />
+            <div className="overflow-hidden relative w-full py-6">
+              <div
+                className="flex transition-transform duration-700 ease-in-out"
+                style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+                >
+                {sponsors.map((logo, i) => (
+                  <div
+                    key={i}
+                    className="min-w-full sm:min-w-1/2 md:min-w-1/3 lg:min-w-1/4 flex justify-center"
+                    >
+                    <Image
+                      src={logo}
+                      alt="sponsor-logo"
+                      width={170}
+                      height={113}
+                      className="transition-transform duration-300 hover:scale-105"
+                    />
+                  </div>
               ))}
+              </div>
+
+              <div className="flex justify-center mt-4 gap-2">
+                {sponsors.map((_, i) => (
+                  <button
+                    key={i}
+                    onClick={() => setCurrentIndex(i)}
+                    className={`w-3 h-3 rounded-full transition ${
+                      i === currentIndex ? "bg-[#62061D]" : "bg-gray-300"
+                    }`}
+                  />
+                ))}
+              </div>
             </div>
           </div>
         </section>
@@ -231,76 +199,109 @@ export default function Home() {
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-10">
-          <div className="border-2 border-gray-300 rounded-3xl p-6">
-            <div className="flex items-center gap-4">
-              <Image
-                src="/review.png"
-                alt="review"
-                width={80}
-                height={80}
-                className="rounded-full"
-              />
-              <div>
-                <h1 className="font-semibold text-base">Jane Doe</h1>
-                <span className="text-xs font-semibold text-gray-500">FOCN 2022</span>
+           <div className="relative w-full max-w-3xl mx-auto">
+      <div className="overflow-hidden">
+        <div
+          className="flex transition-transform duration-700 ease-in-out"
+          style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+        >
+          {reviews.map((review, i) => (
+            <div key={i} className="min-w-full px-4">
+              <div className="border-2 border-gray-300 rounded-3xl p-6 bg-white shadow-md">
+                <div className="flex items-center gap-4">
+                  <Image
+                    src={review.img}
+                    alt="review"
+                    width={80}
+                    height={80}
+                    className="rounded-full"
+                  />
+                  <div>
+                    <h1 className="font-semibold text-base">{review.name}</h1>
+                    <span className="text-xs font-semibold text-gray-500">
+                      {review.role}
+                    </span>
+                  </div>
+                </div>
+                <p className="mt-4 text-sm text-gray-600 leading-relaxed">
+                  {review.text}
+                </p>
               </div>
             </div>
-            <p className="mt-4 text-sm text-gray-600 leading-relaxed">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod 
-              tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, 
-              quis nostrud exercitation ullamco laboris nisi ut aliquip ex.
-            </p>
-          </div>
+          ))}
+        </div>
+      </div>
 
-          <div className="border-2 border-gray-300 rounded-3xl p-6">
-            <div className="flex items-center gap-4">
-              <Image
-                src="/review.png"
-                alt="review"
-                width={80}
-                height={80}
-                className="rounded-full"
-              />
-              <div>
-                <h1 className="font-semibold text-base">Jane Doe</h1>
-                <span className="text-xs font-semibold text-gray-500">FOCN 2022</span>
-              </div>
-            </div>
-            <p className="mt-4 text-sm text-gray-600 leading-relaxed">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod 
-              tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, 
-              quis nostrud exercitation ullamco laboris nisi ut aliquip ex.
-            </p>
-          </div>
-
-          <div className="border-2 border-gray-300 rounded-3xl p-6">
-            <div className="flex items-center gap-4">
-              <Image
-                src="/review.png"
-                alt="review"
-                width={80}
-                height={80}
-                className="rounded-full"
-              />
-              <div>
-                <h1 className="font-semibold text-base">Jane Doe</h1>
-                <span className="text-xs font-semibold text-gray-500">FOCN 2022</span>
-              </div>
-            </div>
-            <p className="mt-4 text-sm text-gray-600 leading-relaxed">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod 
-              tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, 
-              quis nostrud exercitation ullamco laboris nisi ut aliquip ex.
-            </p>
-          </div>
+      {/* Dots navigation */}
+      <div className="flex justify-center mt-4 gap-2">
+        {reviews.map((_, i) => (
+          <button
+            key={i}
+            onClick={() => setCurrentIndex(i)}
+            className={`w-3 h-3 rounded-full transition ${
+              i === currentIndex ? "bg-[#62061D]" : "bg-gray-300"
+            }`}
+          />
+        ))}
+      </div>
+    </div>
         </div>
 
-        {/* <div className="border-8 bg-gradient-to-r from-[#000D54] to-[#62061D] mx-40">
-          <h1>Subscribe to Our newsletter</h1>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et doLorem ipsum dolor sit amet, consectetur a</p>
-          <input className="bg-white rounded-2xl w-20 text-sm p-2 pl-5" type="text" placeholder="Your name" required/>
-          <input className="bg-white rounded-3xl p-2 pl-5" type="email" placeholder="Your email" required />
-        </div> */}
+        
+    <section className="bg-gradient-to-r from-[#1b1a55] to-[#62061D] rounded-4xl mt-20 px-6 sm:px-12 md:px-16 py-2 flex flex-col md:flex-row items-center gap-10">
+      
+      <div className="flex-1 text-center md:text-left">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white leading-snug">
+          Subscribe to <br /> our <span className="text-[#F89A20]">newsletter</span>
+        </h2>
+        <p className="text-gray-200 mt-4 text-sm sm:text-base md:pr-10">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor 
+          incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.
+        </p>
+
+        <form className="mt-6 flex flex-col sm:flex-row items-center gap-3">
+          <input
+            type="text"
+            placeholder="Your name"
+            className="px-4 py-2 rounded-full text-sm flex-1 outline-none border border-gray-300 bg-white"
+          />
+          <input
+            type="email"
+            placeholder="Your email"
+            className="px-4 py-2 rounded-full text-sm flex-1 outline-none border border-gray-300 bg-white"
+          />
+          <button
+            type="submit"
+            className="bg-[#F89A20] p-3 rounded-full flex items-center justify-center hover:opacity-90 transition"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="white"
+              viewBox="0 0 24 24"
+              strokeWidth="2"
+              stroke="currentColor"
+              className="w-5 h-5"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M2.25 12l8.954 8.955c.44.439 1.2.127 1.2-.488V15.75h7.596a.75.75 0 00.75-.75V9a.75.75 0 00-.75-.75H12.404V3.533c0-.615-.76-.927-1.2-.488L2.25 12z"
+              />
+            </svg>
+          </button>
+        </form>
+      </div>
+
+      <div className="flex-1 flex justify-center md:justify-end">
+        <Image
+          src="/newletter.png" 
+          alt="Newsletter"
+          width={400}
+          height={400}
+          className="object-contain hidden md:block"
+        />
+      </div>
+    </section>
       </section>
     </div>
   );
