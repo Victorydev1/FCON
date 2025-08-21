@@ -1,22 +1,17 @@
-import Image from "next/image"
+type ProductCardProps = {
+  name: string
+  price: number
+  image: string
+  rating: number
+}
 
-export default function ProductCard({name, price, image, rating}: any) {
+export default function ProductCard({ name, price, image, rating }: ProductCardProps) {
   return (
-    <div className="bg-white shadow rounded-xl overflow-hidden">
-      <Image
-       src={image} 
-       alt={name} 
-       width={300} 
-       height={300} 
-       className="w-full h-72 object-cover"/>
-      <div className="p-4">
-        <h3 className="font-semibold">{name}</h3>
-        <div className="flex justify-between items-center mt-2">
-          <div className="text-yellow-500">{"★".repeat(rating)}</div>
-          <p className="text-orange-500 font-bold">₦{price}</p>
-        </div>
-        <button className="mt-4 w-full py-2 bg-gradient-to-r from-purple-700 to-orange-400 text-white rounded">👜 Add to cart</button>
-      </div>
+    <div>
+      <img src={image} alt={name} />
+      <h2>{name}</h2>
+      <p>${price}</p>
+      <p>⭐ {rating}</p>
     </div>
   )
 }
