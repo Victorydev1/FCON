@@ -1,7 +1,8 @@
 "use client";
-import { useState } from 'react';
 import React from 'react'
+import { useState } from 'react';
 import Image from "next/image"
+import Link from 'next/link';
 
 
 const Header = () => {
@@ -10,19 +11,21 @@ const Header = () => {
       const navLinks = [
         { name: "About", href: "#" },
         { name: "Gallery", href: "#" },
-        { name: "Voting", href: "#" },
-        { name: "Shop", href: "#" },
+        { name: "Voting", href: "/vote" },
+        { name: "Shop", href: "/shop" },
       ];
   return (
-     <nav className="w-full px-6 sm:px-35 py-4 flex bg-white items-center justify-between sticky top-0 z-50 shadow-md">
-            <Image
-              src="/logo.png"
-              alt="logo"
-              width={130}
-              height={50}
-              priority
-            />
-            <ul className="hidden md:flex gap-8 items-center font-medium">
+    <nav className="w-full px-6 sm:px-35 py-4 flex bg-white items-center justify-between sticky top-0 z-50 shadow-md">
+      <Link href="/">
+        <Image
+          src="/logo.png"
+          alt="logo"
+          width={130}
+          height={50}
+          priority
+        />
+            </Link>
+            <ul className="hidden md:flex gap-8 items-center font-medium text-black">
               {navLinks.map((link) => (
                 <li key={link.name}>
                   <a href={link.href} className="hover:text-orange-500 transition">

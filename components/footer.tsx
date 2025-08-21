@@ -1,5 +1,6 @@
 import React from 'react'
 import Image from "next/image";
+import Link from 'next/link';
 import { FaPhoneAlt, FaEnvelope, FaInstagram } from "react-icons/fa";
 
 const Footer = () => {
@@ -30,8 +31,8 @@ const Footer = () => {
           <div className="flex flex-wrap gap-3">
             <a href="#" className="px-4 py-2 border border-gray-400 rounded-md text-sm hover:bg-white hover:text-[#0A1451] transition">About us</a>
             <a href="#" className="px-4 py-2 border border-gray-400 rounded-md text-sm hover:bg-white hover:text-[#0A1451] transition">Gallery</a>
-            <a href="#" className="px-4 py-2 border border-gray-400 rounded-md text-sm hover:bg-white hover:text-[#0A1451] transition">Voting</a>
-            <a href="#" className="px-4 py-2 border border-gray-400 rounded-md text-sm hover:bg-white hover:text-[#0A1451] transition">Shop</a>
+            <Link href="#" className="px-4 py-2 border border-gray-400 rounded-md text-sm hover:bg-white hover:text-[#0A1451] transition">Voting</Link>
+            <Link href="/shop" className="px-4 py-2 border border-gray-400 rounded-md text-sm hover:bg-white hover:text-[#0A1451] transition">Shop</Link>
             <a href="#" className="px-4 py-2 border border-gray-400 rounded-md text-sm hover:bg-white hover:text-[#0A1451] transition">Contact us</a>
           </div>
         </div>
