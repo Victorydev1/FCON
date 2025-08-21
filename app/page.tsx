@@ -31,8 +31,8 @@ export default function Home() {
             <span className="bg-orange-200 text-yellow-900 font-semibold px-4 py-2 rounded-md mb-4 sm:mb-6 text-xs sm:text-sm tracking-wide">
             FACE OF CONGENIALITY NIGERIA</span>
             <div className="flex flex-wrap gap-2 sm:gap-3">
-              <h1 className="font-poppins text-black text-4xl md:text-5xl font-bold mb-8">Lorem</h1>
-              <h1 className="font-poppins text-4xl md:text-5xl font-bold text-orange-400 mb-8">
+              <h1 className="font-poppins text-black text-4xl md:text-5xl font-bold">Lorem</h1>
+              <h1 className="font-poppins text-4xl md:text-5xl font-bold text-orange-400">
                 Ipsum Dolor
               </h1>
             </div>
