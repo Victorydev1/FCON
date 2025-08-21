@@ -15,7 +15,7 @@ const products = [
 export default function Shop() {
   const slider = useRef<HTMLDivElement>(null)
 
-  const move = (dir: string) => {
+  const move = (dir: "left" | "right") => {
     if (!slider.current) return
     const amount = slider.current.clientWidth
     slider.current.scrollBy({ 
