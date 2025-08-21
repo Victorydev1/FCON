@@ -17,7 +17,7 @@ export default function Shop() {
 
   const move = (dir: string) => {
     if (!slider.current) return
-    let amount = slider.current.clientWidth
+    const amount = slider.current.clientWidth
     slider.current.scrollBy({ 
       left: dir === "left" ? -amount : amount, 
       behavior: "smooth" 

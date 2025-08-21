@@ -154,14 +154,16 @@ export default function Home() {
             <Image 
               src="/ellipse1.png" 
               alt="ellipse"
-              width={104} height={77} />
+              width={104} height={77} 
+              className="hidden md:list-item"/>
             <h1 className="font-poppins text-black font-semibold text-xl sm:text-4xl md:text-5xl">What Inspired</h1>
             <div className="flex items-center gap-4">
               <h1 className="font-poppins text-black font-semibold text-xl sm:text-4xl md:text-5xl">FCON</h1>
               <Image 
                src="/ellipse2.png"
                alt="ellipse"
-               width={104} height={77} />
+               width={104} height={77} 
+               className="hidden md:list-item"/>
             </div>
           </div>
 
