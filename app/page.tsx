@@ -206,7 +206,7 @@ export default function Home() {
               <div
                 className="flex transition-transform duration-700 ease-in-out"
                 style={{ transform: `translateX(-${currentIndex * 100}%)` }}
-              >
+               >
                 {reviews.map((review, i) => (
                   <div key={i} className="min-w-full px-4">
                     <div className="border-2 border-gray-300 rounded-3xl p-6 shadow-md">

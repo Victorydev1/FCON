@@ -9,8 +9,8 @@ const Header = () => {
       const [isOpen, setIsOpen] = useState(false);
     
       const navLinks = [
-        { name: "About", href: "#" },
-        { name: "Gallery", href: "#" },
+        { name: "About", href: "/about" },
+        { name: "Gallery", href: "/gallery" },
         { name: "Voting", href: "/vote" },
         { name: "Shop", href: "/shop" },
       ];
