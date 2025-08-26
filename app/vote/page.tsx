@@ -1,5 +1,13 @@
+"use client";
+
 import React from 'react'
 import Image from 'next/image'
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/autoplay";
+
+import { Pagination, Autoplay } from "swiper/modules";
 
 type Candidate = {
   id: number
@@ -20,72 +28,136 @@ const candidates: Candidate[] = [
 ]
 
 const Vote = () => {  
+
   return (
-    <div>
-      <div className="flex flex-col md:flex-row w-full bg-gradient-to-r from-orange-200 to-pink-200 p-6 md:p-12 text-center">
-        <div className="flex flex-col sm:px-10 md:px-20 md:w-1/2 py-10 md:py-0">
-          <div className="pt-20 flex flex-wrap gap-2 sm:gap-3">
-            <h1 className="text-3xl md:text-6xl font-bold text-gray-900 leading-tighter tracking-wide">
-              Cast Your Vote for <br />
-              <span className="text-orange-600">the Face of Congeniality 2023</span>
-            </h1>
-            <p className="mt-4 text-gray-700 max-w-xl mx-auto">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-              minim veniam, quis.
-            </p>
-            <br />
-            <Image 
-              src="/arrow.png"
-              alt='arrow'
-              width={91.06}
-              height={91.06}
-              className='ml-25 md:justify-center px-6 py-3 list-item md:hidden' />
-          </div>
-          <div className="md:flex-row items-center">
-            <div className="relative left-190 bottom-96 w-[623px] h-[477px]">
-              <Image
-                src="/vote.png"
-                alt="Jane Doe"
-                width={950}
-                height={560}
-                className="w-full h-full hidden md:list-item object-cover"
-              />
-            </div>
-          </div>
+    <>
+  <div className="bg-[url('/back.png')] bg-cover relative">
+    <div className="px-6 sm:px-10 md:px-20 py-12 md:py-20">
+      <div className="pt-12 md:pt-20 px-2 md:px-15 gap-2 sm:gap-3">
+        <h1 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold text-left text-gray-900 leading-tight tracking-wide">
+          Cast Your Vote for <br /> the
+          <span className="text-yellow-400">
+            Face of <br /> Congeniality 2023
+          </span>
+        </h1>
+        <br />
+        <div className="flex flex-col sm:flex-row gap-4">
+          <Image
+            src="/Voting/spiral.svg"
+            alt="spiral"
+            width={55.71}
+            height={108.93}
+            className="mx-auto sm:mx-0"
+          />
+          <p className="mt-2 sm:mt-4 text-gray-700 text-sm md:text-base text-left">
+            Lorem ipsum dolor sit amet, consectetur <br /> adipiscing elit, sed
+            do eiusmod tempor incididunt <br /> ut labore et dolore magna aliqua.
+            Ut enim ad <br /> minim veniam, quis.
+          </p>
         </div>
+        <br />
+        <Image
+          src="/Voting/arrow.png"
+          alt="arrow"
+          width={120}
+          height={91.06}
+          className="mx-auto md:ml-25 md:justify-center px-6 list-item"
+        />
       </div>
 
+      <Image
+        src="/vote.png"
+        alt="Jane Doe"
+        width={623}
+        height={477}
+        className="hidden md:block absolute right-6 md:left-190 bottom-0 md:bottom-15"
+      />
+    </div>
+  </div>
 
-      <section className="w-full py-12 px-6 md:px-12">
-        <h2 className="text-center text-2xl md:text-3xl font-bold mb-8">
-          Lorem Ipsum Lorem Ipsum
-        </h2>
+  <section className="py-12 text-black px-6 md:px-12 bg-white">
+    <h2 className="text-center text-2xl md:text-3xl font-bold mb-4">
+      Lorem Ipsum Lorem Ipsum
+    </h2>
+    <p className="text-center text-sm md:text-base max-w-2xl mx-auto mb-8">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+      tempor incididunt ut labore et dolore magna a
+    </p>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-          {candidates.map((c) => (
-            <div
-              key={c.id}
-              className="bg-white shadow-md rounded-xl p-4 flex flex-col items-center"
-            >
+    <div>
+     <div className="sm:hidden"> {/* show only on mobile */}
+      <Swiper
+        modules={[Pagination, Autoplay]}
+        spaceBetween={16}
+        slidesPerView={1}
+        pagination={{ clickable: true }}
+        autoplay={{ delay: 5000, disableOnInteraction: false }} // auto-slide every 5s
+        loop={true}
+        className="w-full"
+      >
+        {candidates.map((c) => (
+          <SwiperSlide key={c.id}>
+            <div className="w-full sm:w-80 text-black border-2 border-gray-300 rounded-3xl pb-px mt-8 mx-auto">
               <Image
                 src={c.image}
                 alt={c.name}
                 width={264.16}
                 height={156.09}
-                className="rounded-lg w-full h-48 object-cover"
+                className="w-full h-72 object-cover rounded-t-3xl"
               />
-              <h3 className="mt-4 text-lg font-semibold">{c.name}</h3>
-              <p className="text-gray-600 text-sm">Lorem ipsum dolor sit amet</p>
-              <p className="mt-2 font-bold">{c.votes} Votes</p>
-              <button className="mt-4 bg-orange-600 text-white px-4 py-2 rounded-lg hover:bg-orange-700 transition">
-                Buy Votes
-              </button>
+              <div className="p-4 flex flex-col sm:flex-row sm:flex-wrap sm:justify-between rounded-b-3xl bg-white items-center">
+                <h3 className="mt-2 sm:mt-4 text-base md:text-lg font-semibold text-center sm:text-left">
+                  {c.name}
+                </h3>
+                <p className="text-gray-600 text-xs md:text-sm text-center sm:text-left">
+                  Lorem ipsum dolor sit amet
+                </p>
+                <p className="my-2 font-bold text-center bg-orange-300 rounded-md py-2 px-4 w-full sm:w-auto">
+                  {c.votes} Votes
+                </p>
+                <button className="mt-3 sm:mt-0 bg-gradient-to-r from-[#62061D] to-[#F89A20] text-white px-6 md:px-8 py-2 rounded-md shadow hover:opacity-90 transition">
+                  Buy Votes
+                </button>
+              </div>
             </div>
-          ))}
-        </div>
-      </section>
+          </SwiperSlide>
+        ))}
+      </Swiper>
     </div>
+  <div className="hidden sm:grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+    {candidates.map((c) => (
+      <div
+        key={c.id}
+        className="w-full sm:w-80 text-black border-2 border-gray-300 rounded-3xl pb-px mt-8 mx-auto"
+      >
+        <Image
+          src={c.image}
+          alt={c.name}
+          width={264.16}
+          height={156.09}
+          className="w-full h-72 object-cover rounded-t-3xl"
+        />
+        <div className="p-4 flex sm:flex-row sm:flex-wrap sm:justify-between rounded-b-3xl bg-white items-center">
+          <h3 className="mt-2 sm:mt-4 text-base md:text-lg font-semibold text-center sm:text-left">
+            {c.name}
+          </h3>
+          <p className="text-gray-600 text-xs md:text-sm text-center sm:text-left">
+            Lorem ipsum dolor sit amet
+          </p>
+          <p className="my-2 font-bold text-center bg-orange-300 rounded-md py-2 px-4">
+            {c.votes} Votes
+          </p>
+          <button className="mt-3 sm:mt-0 bg-gradient-to-r from-[#62061D] to-[#F89A20] text-white px-6 md:px-8 py-2 rounded-md shadow hover:opacity-90 transition">
+            Buy Votes
+          </button>
+        </div>
+      </div>
+    ))}
+  </div>
+</div>
+  </section>
+</>
+
   )
 }
 

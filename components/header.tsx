@@ -59,7 +59,7 @@ const Header = () => {
                 </button>
               </div>
     
-              <ul className="flex flex-col gap-6 p-6 font-medium">
+              <ul className="flex flex-col gap-6 p-6 font-medium text-black">
                 {navLinks.map((link) => (
                   <li key={link.name}>
                     <a
